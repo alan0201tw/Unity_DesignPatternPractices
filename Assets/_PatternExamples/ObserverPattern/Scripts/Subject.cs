@@ -34,10 +34,10 @@ namespace DesignPatternExample.ObserverPattern
         private Collider otherCollider;
         public Collider OtherCollider { get { return otherCollider; } }
 
-        public CollisionData(Collision _collision)
+        public CollisionData(Collision collision)
         {
-            impulse = _collision.impulse;
-            otherCollider = _collision.collider;
+            impulse = collision.impulse;
+            otherCollider = collision.collider;
         }
     }
 }

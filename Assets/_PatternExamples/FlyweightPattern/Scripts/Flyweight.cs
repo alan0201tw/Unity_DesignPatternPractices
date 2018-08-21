@@ -6,20 +6,20 @@ namespace DesignPatternExample.FlywrightPattern
 {
     public class TerrainTile
     {
-        private int movementCost;
-        public int MovementCost { get { return movementCost; } }
+        private int m_movementCost;
+        public int MovementCost { get { return m_movementCost; } }
 
-        private bool isWater;
-        public bool IsWater { get { return isWater; } }
+        private bool m_isWater;
+        public bool IsWater { get { return m_isWater; } }
 
-        private Color tileColor;
-        public Color TileColor { get { return tileColor; } }
+        private Color m_tileColor;
+        public Color TileColor { get { return m_tileColor; } }
 
-        public TerrainTile(int _movementCost, bool _isWater, Color _tileColor)
+        public TerrainTile(int movementCost, bool isWater, Color tileColor)
         {
-            movementCost = _movementCost;
-            isWater = _isWater;
-            tileColor = _tileColor;
+            m_movementCost = movementCost;
+            m_isWater = isWater;
+            m_tileColor = tileColor;
         }
     }
     

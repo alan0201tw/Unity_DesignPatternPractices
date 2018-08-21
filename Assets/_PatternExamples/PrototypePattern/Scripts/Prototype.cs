@@ -13,17 +13,17 @@ namespace DesignPatternExample.PrototypePattern
 
     public class Goblin : Monster
     {
-        public Goblin(Vector3 _position)
+        public Goblin(Vector3 position)
         {
             m_color = Color.red;
-            m_position = _position;
+            m_position = position;
             InstantiateInScene();
         }
 
-        public Goblin(Goblin _prototype)
+        public Goblin(Goblin prototype)
         {
             m_color = Color.red;
-            m_position = _prototype.m_position;
+            m_position = prototype.m_position;
             InstantiateInScene();
         }
 
@@ -42,17 +42,17 @@ namespace DesignPatternExample.PrototypePattern
 
     public class Skeleton : Monster
     {
-        public Skeleton(Vector3 _position)
+        public Skeleton(Vector3 position)
         {
             m_color = Color.grey;
-            m_position = _position;
+            m_position = position;
             InstantiateInScene();
         }
 
-        public Skeleton(Skeleton _prototype)
+        public Skeleton(Skeleton prototype)
         {
             m_color = Color.grey;
-            m_position = _prototype.m_position;
+            m_position = prototype.m_position;
             InstantiateInScene();
         }
 

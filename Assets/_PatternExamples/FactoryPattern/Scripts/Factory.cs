@@ -23,16 +23,16 @@ namespace DesignPatternExample.FactoryPattern
 
     public class AudioServiceFactory
     {
-        public static IAudioServiceProvider CreateAudioService(AudioServiceType _audioServiceType,
-            float _volume = 1f)
+        public static IAudioServiceProvider CreateAudioService(AudioServiceType audioServiceType,
+            float volume = 1f)
         {
-            switch (_audioServiceType)
+            switch (audioServiceType)
             {
                 case AudioServiceType.Broken:
                     return new BrokenAudioServiceProvider();
                 case AudioServiceType.Instancing:
                 default:
-                    return new InstancingAudioServiceProvider(_volume);
+                    return new InstancingAudioServiceProvider(volume);
             }
         }
     }
@@ -54,19 +54,19 @@ namespace DesignPatternExample.FactoryPattern
             public abstract void Talk();
         }
 
-        public static Monster CreateMonster(MonsterRace _race, string _name = "")
+        public static Monster CreateMonster(MonsterRace race, string name = "")
         {
-            switch(_race)
+            switch(race)
             {
                 case MonsterRace.Goblin:
-                    return new Goblin(_name);
+                    return new Goblin(name);
                 case MonsterRace.Ghost:
-                    if (_name == "")
+                    if (name == "")
                         return new AnonymousStranger();
-                    return new SlientGhost(_name);
+                    return new SlientGhost(name);
             }
 
-            Debug.LogError("MonsterFactory.CreateMonster Error : No corresponding monster with parameters _race = " + _race.ToString() + ", _name = " + _name);
+            Debug.LogError("MonsterFactory.CreateMonster Error : No corresponding monster with parameters race = " + race.ToString() + ", name = " + name);
             return null;
         }
 
@@ -83,9 +83,9 @@ namespace DesignPatternExample.FactoryPattern
                 }
             }
             
-            public Goblin(string _name)
+            public Goblin(string name)
             {
-                Name = _name;
+                Name = name;
             }
 
             public override void Talk()
@@ -107,9 +107,9 @@ namespace DesignPatternExample.FactoryPattern
                 }
             }
 
-            public SlientGhost(string _name)
+            public SlientGhost(string name)
             {
-                Name = _name;
+                Name = name;
             }
 
             public override void Talk()

@@ -7,8 +7,8 @@ namespace DesignPatternExample.FactoryPattern
     public interface IAudioServiceProvider
     {
         float GetVolume();
-        void SetVolume(float _volume);
-        bool PlayAudioClip(AudioClip _clip);
+        void SetVolume(float volume);
+        bool PlayAudioClip(AudioClip clip);
         /// ...etc
     }
 
@@ -21,12 +21,12 @@ namespace DesignPatternExample.FactoryPattern
             return 0f;
         }
 
-        public bool PlayAudioClip(AudioClip _clip)
+        public bool PlayAudioClip(AudioClip clip)
         {
             return false;
         }
 
-        public void SetVolume(float _volume)
+        public void SetVolume(float volume)
         {
             return;
         }
@@ -34,9 +34,9 @@ namespace DesignPatternExample.FactoryPattern
 
     public class InstancingAudioServiceProvider : IAudioServiceProvider
     {
-        public InstancingAudioServiceProvider(float _volume)
+        public InstancingAudioServiceProvider(float volume)
         {
-            m_volume = _volume;
+            m_volume = volume;
         }
 
         private float m_volume;
@@ -46,24 +46,24 @@ namespace DesignPatternExample.FactoryPattern
             return m_volume;
         }
 
-        public bool PlayAudioClip(AudioClip _clip)
+        public bool PlayAudioClip(AudioClip clip)
         {
             GameObject dummy = new GameObject();
             AudioSource dummyAudioSource = dummy.AddComponent<AudioSource>();
 
-            dummyAudioSource.clip = _clip;
+            dummyAudioSource.clip = clip;
             dummyAudioSource.volume = m_volume;
             dummyAudioSource.Play();
 
             // destroy the dummy gameObject one second after the clip is finished
-            Object.Destroy(dummy, _clip.length + 1f);
+            Object.Destroy(dummy, clip.length + 1f);
 
             return true;
         }
 
-        public void SetVolume(float _volume)
+        public void SetVolume(float volume)
         {
-            m_volume = _volume;
+            m_volume = volume;
         }
     }
 }
