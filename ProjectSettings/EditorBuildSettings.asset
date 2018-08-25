@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_PatternExamples/SingletonAndServiceLocatorPattern/Scenes/SceneA.unity
+    guid: bcb0c2c512e95ec47927bec26dcbeaa9
+  - enabled: 1
+    path: Assets/_PatternExamples/SingletonAndServiceLocatorPattern/Scenes/ComplexScene.unity
+    guid: 7e1a608b51c3b284783673513bd38169
