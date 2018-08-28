@@ -4,18 +4,14 @@ using UnityEngine;
 
 namespace DesignPatternExample.StatePattern
 {
-    [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Rigidbody))]
     public class Demo : MonoBehaviour
     {
-        [SerializeField]
-        private Collider m_collider;
         [SerializeField]
         private Rigidbody m_rigidbody;
 
         private void Reset()
         {
-            m_collider = GetComponent<Collider>();
             m_rigidbody = GetComponent<Rigidbody>();
         }
 
