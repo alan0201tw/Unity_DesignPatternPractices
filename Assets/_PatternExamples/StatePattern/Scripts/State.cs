@@ -14,15 +14,30 @@ namespace DesignPatternExample.StatePattern
 
     // This part is sort of like the Strategy pattern, but it has the advantage for main object
     // (in this case, the Demo component) to change its behavior by changing the stateCommand object.
-    // Please notice that the actual transitions between commands
-    // While in Strategy pattern
+    // Please notice that the actual transitions between commands should be done in Demo.
+
+    /* for example
+        void Update()
+        {
+            StateCommand nextState = m_stateCommand.HandleInput();
+            if(nextState != null)
+            {
+                m_stateCommand.OnExitState();
+
+                m_stateCommand = nextState;
+                m_stateCommand.OnEnterState();
+            }
+        }
+    */
 
     // you can also use this commmand instance to handle input
     public abstract class StateCommand
     {
+        // This is a super simplify version, for the sake of demonstration
+
         // use protected since all commmand will be inherit from here, so exposing to them is enough
-        protected static IdleCommand idle = new IdleCommand();
-        protected static WalkingCommand walkingCommand = new WalkingCommand();
+        protected static IdleCommand s_idle = new IdleCommand();
+        protected static WalkingCommand s_walkingCommand = new WalkingCommand();
 
         // this will return the next command, if it's null, the state remains unchanged
         public abstract StateCommand HangleInput(Demo demo);
@@ -46,13 +61,13 @@ namespace DesignPatternExample.StatePattern
             {
                 Vector3 newVel = new Vector3(-1, m_rigidbody.velocity.y, 0);
                 m_rigidbody.velocity = newVel;
-                stateCommand = walkingCommand;
+                stateCommand = s_walkingCommand;
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 Vector3 newVel = new Vector3(1, m_rigidbody.velocity.y, 0);
                 m_rigidbody.velocity = newVel;
-                stateCommand = walkingCommand;
+                stateCommand = s_walkingCommand;
             }
 
             return stateCommand;
